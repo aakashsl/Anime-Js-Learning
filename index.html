@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing</title>
+    <style>
+        .square, #sc{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            margin: 2px;
+            z-index: 1;
+            
+        }
+
+        .shadow{
+            width: 50px;
+            height: 50px;
+            background-color: rgb(165, 121, 121);
+            z-index: -1;
+            
+        }
+        .con{
+            background-color: rgb(155, 150, 150);
+            padding: 30px;
+            width: 500px;
+            height: 200px;
+            margin: 10px;
+
+        }
+        </style>
+</head>
+<body>
+    <div class="con">
+    <div class="shadow">
+        <div class="square" ></div>
+    </div>
+</div>
+
+    <div class="con">
+        <div class="shadow">
+            <div class="square" ></div>
+        </div>
+        <div class="shadow">
+            <div class="square" ></div>
+        </div>
+        <div class="shadow">
+            <div class="square" ></div>
+        </div>
+</div>
+
+<p id="count"></p>
+
+<div class="con">
+    <div class="shadow">
+        <div id="sc"></div>
+    </div>
+</div>
+
+<div>
+    <svg width="250px" height="250px" id="pol">
+        <polygon points="64 68.64 8.574 100 63.446 67.68 64 4 64.554 67.68 119.426 100 " fill="orange"></polygon>
+    </svg>
+</div>
+    <script src="./anime.min.js"></script>
+    <script>
+            anime({
+                targets: '.square',
+                translateX: 250,
+            });
+            var1=document.getElementById("count")
+            var battery = {
+            charged: '100%',
+            cycles: 120
+            }
+            anime({
+                targets: battery,
+                charged:'0%',
+                cycles:1000,
+                round: 1,
+                easing: 'linear',
+                update: function() {
+                var1.innerHTML = JSON.stringify(battery);
+            }
+            })
+
+            anime({
+                targets:"#sc",
+                translateX:250,
+                backgroundColor: '#FFF',
+                borderRadius: ['0%', '50%'],
+                easing: 'easeInOutQuad'
+            });
+
+            anime({
+                targets:'#pol polygon',
+                points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 98',
+                baseFrequency: 0,
+                scale: 1,
+                loop: true,
+                direction: 'alternate',
+                easing: 'easeInOutExpo'
+
+            })
+    </script>
+</body>
+</html>
